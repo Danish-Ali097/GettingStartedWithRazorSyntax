@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+@using GettingStartedWithRazorSyntax.Models
+@model  Student
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/Site.css")
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <title>Index</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 id="branding"><span class="highlight">Student</span> Management</h1>
+            <nav>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Student")</li>
+                </ul>
+                <ul>
+                    <li>@Html.ActionLink("About", "About", "Student", new { area = "" }, new { @class = "current" })</li>
+                </ul>
+                <ul>
+                    <li>@Html.ActionLink("Contact", "Contact", "Student")</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            
+        </div>
+    </section>
+</body>
+</html>

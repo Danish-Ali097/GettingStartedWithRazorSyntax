@@ -1,0 +1,62 @@
+﻿@{
+    Layout = null;
+}
+@using GettingStartedWithRazorSyntax.Models
+@model  Student
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/Site.css")
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+    <title>Index</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 id="branding"><span class="highlight">Student</span> Management</h1>
+            <nav>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Student", new { area = "" }, new { @class = "current" })</li>
+                </ul>
+                <ul>
+                    <li>@Html.ActionLink("About", "About", "Student")</li>
+                </ul>
+                <ul>
+                    <li>@Html.ActionLink("Contact", "Contact", "Student")</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            @Html.ActionLink("View All", "ViewAll", "Student")
+            @using (Html.BeginForm())
+            {
+                @Html.LabelFor(m => m.Id)
+                @Html.EditorFor(m => m.Id)
+                @Html.ValidationMessageFor(m => m.Id, "", new { @class = "errmsg" })
+                <br>
+                @Html.LabelFor(m => m.Name)
+                @Html.EditorFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "errmsg" })
+                <br>
+                @Html.LabelFor(m => m.Age)
+                @Html.EditorFor(m => m.Age)
+                @Html.ValidationMessageFor(m => m.Age, "", new { @class = "errmsg" })
+                <br>
+                @Html.LabelFor(m => m.Address)
+                @Html.TextAreaFor(m => m.Address)
+                @Html.ValidationMessageFor(m => m.Address,"", new { @class="errmsg"})
+
+                <br>
+                <button type="submit" class="button1">Submit</button>
+                @ViewBag.Message;
+            }
+        </div>
+    </section>
+</body>
+</html>

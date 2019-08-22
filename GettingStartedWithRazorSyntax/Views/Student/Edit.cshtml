@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+@using GettingStartedWithRazorSyntax.Models
+@model  Student
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/Site.css")
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <title>Index</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 id="branding"><span class="highlight">Student</span> Management</h1>
+            <nav>
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Student", new { area = "" }, new { @class = "current" })</li>
+                </ul>
+                <ul>
+                    <li>@Html.ActionLink("About", "About", "Student")</li>
+                </ul>
+                <ul>
+                    <li>@Html.ActionLink("Contact", "Contact", "Student")</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            @using (Html.BeginForm("Edit","Student",FormMethod.Post))
+            {
+                @Html.DisplayNameFor(Model => Model.Name)
+                @Html.EditorFor(Model => Model.Name)
+                @Html.ValidationMessageFor(Model => Model.Name)
+                <br>
+                @Html.DisplayNameFor(Model => Model.Age)
+                @Html.EditorFor(Model => Model.Age)
+                @Html.ValidationMessageFor(Model => Model.Age)
+                <br>
+                @Html.DisplayNameFor(Model => Model.Address)
+                @Html.TextAreaFor(Model => Model.Address)
+                @Html.ValidationMessageFor(Model => Model.Address)
+                <button class="button1">Update</button>
+            }
+        </div>
+    </section>
+</body>
+</html>
